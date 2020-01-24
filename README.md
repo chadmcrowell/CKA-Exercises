@@ -9,14 +9,14 @@ The format of the  exam is entirely in a hands-on, command-line environment. You
 These exercises are supplemental to and follow the [CKA course](https://linuxacademy.com/course/cloud-native-certified-kubernetes-administrator-cka/) on Linux Academy. If you don't have a cluster to practice on, the Hands-on Labs at Linux Academy are the quickest way to get started. Also, I created this [k8s cheat sheet](https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/) to help you memorize commands.
 
 During the exam, you will have access to six different clusters (below) in the following configurations:
-|Cluster|Members              |CNI     |Description                      |   
-|-------|---------------------|--------|---------------------------------|
-|k8s    |1 master, 2 worker   |flannel |k8s cluster                      |
-|hk8s   |1 master, 2 worker   |calico  |k8s cluster                      |
-|bk8s   |1 master, 1 worker   |flannel |k8s cluster                      |
-|wk8s   |1 master, 2 worker   |flannel |k8s cluster                      |
-|ek8s   |1 master, 2 worker   |flannel |k8s cluster                      |
-|ik8s   |1 master, 1 base node|loopback|k8s cluster - missing worker node|
+| Cluster | Members               | CNI      | Description                       |   
+| ------- | --------------------- | -------- | --------------------------------- |
+| k8s     | 1 master, 2 worker    | flannel  | k8s cluster                       |
+| hk8s    | 1 master, 2 worker    | calico   | k8s cluster                       |
+| bk8s    | 1 master, 1 worker    | flannel  | k8s cluster                       |
+| wk8s    | 1 master, 2 worker    | flannel  | k8s cluster                       |
+| ek8s    | 1 master, 2 worker    | flannel  | k8s cluster                       |
+| ik8s    | 1 master, 1 base node | loopback | k8s cluster - missing worker node |
 [source](https://training.linuxfoundation.org/wp-content/uploads/2020/01/Important-Tips-CKA-CKAD-January-2020.pdf)
 
 Also during the exam, you may have one and ONLY one of the following tabs open at all times:  
