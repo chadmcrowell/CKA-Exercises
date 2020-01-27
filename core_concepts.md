@@ -10,142 +10,75 @@ kubernetes.io > Documentation > Tasks > Access Applications in a Cluster > [Acce
 
 kubernetes.io > Documentation > Tasks > Access Applications in a Cluster > [Use Port Forwarding to Access Applications in a Cluster](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
 
-### Create a namespace called 'mynamespace' and a pod with image nginx called nginx on this namespace
+### Setup autocomplete for k8s commands
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl create namespace mynamespace
-kubectl run nginx --image=nginx --restart=Never -n mynamespace
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
 
 </p>
 </details>
 
-### Create the pod that was just described using YAML
+### Show kubeconfig settings
 
 <details><summary>show</summary>
 <p>
 
-Easily generate YAML with:
-
 ```bash
-kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml
-```
-
-```bash
-cat pod.yaml
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  creationTimestamp: null
-  labels:
-    run: nginx
-  name: nginx
-spec:
-  containers:
-  - image: nginx
-    imagePullPolicy: IfNotPresent
-    name: nginx
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Never
-status: {}
-```
-
-```bash
-kubectl create -f pod.yaml -n mynamespace
-```
-
-Alternatively, you can run in one line
-
-```bash
-kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml | kubectl create -n mynamespace -f -
+kubectl config view
 ```
 
 </p>
 </details>
 
-### Create a busybox pod (using kubectl command) that runs the command "env". Run it and see the output
+### Use multiple kubeconfig files at the same time
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl run busybox --image=busybox --command --restart=Never -it -- env # -it will help in seeing the output
-# or, just run it without -it
-kubectl run busybox --image=busybox --command --restart=Never -- env
-# and then, check its logs
-kubectl logs busybox
+KUBECONFIG=~/.kube/config:~/.kube/kubconfig2
 ```
 
 </p>
 </details>
 
-### Create a busybox pod (using YAML) that runs the command "env". Run it and see the output
+### Permanently save the namespace for all subsequent kubectl commands in that context.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-# create a  YAML template with this command
-kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml --command -- env > envpod.yaml
-# see it
-cat envpod.yaml
-```
-
-```YAML
-apiVersion: v1
-kind: Pod
-metadata:
-  creationTimestamp: null
-  labels:
-    run: busybox
-  name: busybox
-spec:
-  containers:
-  - command:
-    - env
-    image: busybox
-    name: busybox
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Never
-status: {}
-```
-
-```bash
-# apply it and then see the logs
-kubectl apply -f envpod.yaml
-kubectl logs busybox
+kubectl config set-context --current --namespace=ggckad-s2
 ```
 
 </p>
 </details>
 
-### Get the YAML for a new namespace called 'myns' without creating it
+### Set a context utilizing a specific username and namespace
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl create namespace myns -o yaml --dry-run
+kubectl config set-context gce --user=cluster-admin --namespace=foo \
+  && kubectl config use-context gce
 ```
 
 </p>
 </details>
 
-### Get the YAML for a new ResourceQuota called 'myrq' with hard limits of 1 CPU, 1G memory and 2 pods without creating it
+### List all services in the namespace
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl create quota myrq --hard=cpu=1,memory=1G,pods=2 --dry-run -o yaml
+kubectl get services
 ```
 
 </p>
@@ -163,57 +96,38 @@ kubectl get po --all-namespaces
 </p>
 </details>
 
-### Create a pod with image nginx called nginx and allow traffic on port 80
+### List all pods in the namespace, with more details
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl run nginx --image=nginx --restart=Never --port=80
+kubectl get pods -o wide
 ```
 
 </p>
 </details>
 
-### Change pod's image to nginx:1.7.1. Observe that the pod will be killed and recreated as soon as the image gets pulled
+### List a particular deployment
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-# kubectl set image POD/POD_NAME CONTAINER_NAME=IMAGE_NAME:TAG
-kubectl set image pod/nginx nginx=nginx:1.7.1
-kubectl describe po nginx # you will see an event 'Container will be killed and recreated'
-kubectl get po nginx -w # watch it
-```
-*Note*: you can check pod's image by running
-
-```bash
-kubectl get po nginx -o jsonpath='{.spec.containers[].image}{"\n"}'
+kubectl get deployment my-deployment
 ```
 
 </p>
 </details>
 
-### Get nginx pod's ip created in previous step, use a temp busybox image to wget its '/'
+### List all pods in the default namespace
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl get po -o wide # get the IP, will be something like '10.1.1.131'
-# create a temp busybox pod
-kubectl run busybox --image=busybox --rm -it --restart=Never -- wget -O- 10.1.1.131:80
+kubectl get pods
 ```
-
-Alternatively you can also try a more advanced option:
-
-```bash
-# Get IP of the nginx pod
-NGINX_IP=$(kubectl get pod nginx -o jsonpath='{.status.podIP}')
-# create a temp busybox pod
-kubectl run busybox --image=busybox --env="NGINX_IP=$NGINX_IP" --rm -it --restart=Never -- wget -O- $NGINX_IP:80
-``` 
 
 </p>
 </details>
@@ -225,12 +139,6 @@ kubectl run busybox --image=busybox --env="NGINX_IP=$NGINX_IP" --rm -it --restar
 
 ```bash
 kubectl get po nginx -o yaml
-# or
-kubectl get po nginx -oyaml
-# or
-kubectl get po nginx --output yaml
-# or
-kubectl get po nginx --output=yaml
 ```
 
 </p>
@@ -260,70 +168,240 @@ kubectl logs nginx
 </p>
 </details>
 
-### If pod crashed and restarted, get logs about the previous instance
+### Output a pod's YAML without cluster specific information
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl logs nginx -p
+kubectl get pod my-pod -o yaml --export
 ```
 
 </p>
 </details>
 
-### Execute a simple shell on the nginx pod
+### List all nodes in the cluster
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl exec -it nginx -- /bin/sh
+kubectl get nodes
+# or, get more information about the nodes
+kubectl get nodes -o wide
 ```
 
 </p>
 </details>
 
-### Create a busybox pod that echoes 'hello world' and then exits
+### Describe nodes with verbose output
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl run busybox --image=busybox -it --restart=Never -- echo 'hello world'
+kubectl describe nodes
+```
+
+</p>
+</details>
+
+### List services sorted by name
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get services --sort.by=.metadata.name
+```
+
+</p>
+</details>
+
+### Get the external IP of all nodes
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="ExternalIP")].address}'
+```
+
+</p>
+</details>
+
+### Create a new namespace
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl create namespace web
+```
+
+</p>
+</details>
+
+### List all the namespaces that exist in the cluster
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get namespaces
+```
+
+</p>
+</details>
+
+### Create a pod which runs an nginx container
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl run nginx --image=nginx
 # or
-kubectl run busybox --image=busybox -it --restart=Never -- /bin/sh -c 'echo hello world'
+kubectl run nginx2 --image=nginx --restart=Never --dry-run -o yaml | kubectl create -f -
 ```
 
 </p>
 </details>
 
-### Do the same, but have the pod deleted automatically when it's completed
+### Delete a pod
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl run busybox --image=busybox -it --rm --restart=Never -- /bin/sh -c 'echo hello world'
-kubectl get po # nowhere to be found :)
+kubectl delete po nginx
 ```
 
 </p>
 </details>
 
-### Create an nginx pod and set an env value as 'var1=val1'. Check the env value existence within the pod
+### Get the status of the control plane components
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl run nginx --image=nginx --restart=Never --env=var1=val1
-# then
-kubectl exec -it nginx -- env
-# or
-kubectl describe po nginx | grep val1
-# or
-kubectl run nginx --restart=Never --image=nginx --env=var1=val1 -it --rm -- env
+kubectl get componentstatus
+```
+
+</p>
+</details>
+
+### Create a deployment with two replica pods from YAML
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# create a  YAML template with this command
+kubectl run nginx --image=nginx --replicas=2 --dry-run -o yaml > deploy.yaml
+# see it
+cat deploy.yaml
+```
+
+```YAML
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: nginx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: nginx
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}
+```
+
+```bash
+# create the deployment 
+kubectl apply -f deploy.yaml
+# get verbose output of deployment YAML
+kubectl get deploy nginx-deployment -o yaml
+# add an annotation to the deployment
+kubectl annotate deploy nginx mycompany.com/someannotation="chad"
+# delete the deployment 
+kubectl delete deploy nginx
+```
+
+</p>
+</details>
+
+### Add an annotation to a deployment
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl annotate deploy nginx mycompany.com/someannotation="chad"
+```
+
+</p>
+</details>
+
+### Add a label to a pod
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl label pods nginx env=prod
+```
+
+</p>
+</details>
+
+### Show labels for all pods in the cluster
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get pods --show-labels
+# or get pods with the env label
+kubectl get po -L env
+```
+
+</p>
+</details>
+
+### List all pods that are in the running state using field selectors
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get po --field-selector status.phase=Running
+```
+
+</p>
+</details>
+
+### List all services in the default namespace using field selectors
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get po --field-selector status.phase=Running
 ```
 
 </p>
