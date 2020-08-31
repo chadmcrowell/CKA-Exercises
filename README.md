@@ -1,7 +1,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 # CKA Exercises
-<a href="https://imgrepopublic.blob.core.windows.net/img/Twitter-3.jpg"></a>
+[![a-cloud-guru](https://imgrepopublic.blob.core.windows.net/img/Twitter-3.jpg)](https://acloud.guru)
 
 A set of exercises to help you prepare for the [Certified Kubernetes Administrator (CKA) Exam](https://www.cncf.io/certification/cka/) 
 
