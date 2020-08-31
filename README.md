@@ -20,7 +20,7 @@ During the exam, you will have access to six different clusters (below) in the f
 | ek8s | 1 master\, 2 worker | flannel | k8s cluster |
 | ik8s | 1 master\, 1 base node | loopback | k8s cluster \- missing worker node |
 
-[source](https://training.linuxfoundation.org/wp-content/uploads/2020/01/Important-Tips-CKA-CKAD-January-2020.pdf)
+[source](https://docs.linuxfoundation.org/tc-docs/certification/tips-cka-and-ckad#cka-and-ckad-environment)
 
 Also during the exam, you may have one and ONLY one of the following tabs open at all times:  
 [kubernetes.io](https://kubernetes.io/docs/home/)  
