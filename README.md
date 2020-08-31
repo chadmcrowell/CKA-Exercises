@@ -7,7 +7,7 @@ A set of exercises to help you prepare for the [Certified Kubernetes Administrat
 
 The format of the  exam is entirely in a hands-on, command-line environment. You can take the exam at home or in a testing center, and you must complete the exam in 180 minutes. Register for the exam [here](https://identity.linuxfoundation.org/pid/699). The cost is US $300.00. 
 
-These exercises are supplemental to and follow the [CKA course](https://linuxacademy.com/course/cloud-native-certified-kubernetes-administrator-cka/) on Linux Academy. If you don't have a cluster to practice on, the Hands-on Labs at Linux Academy are the quickest way to get started. Also, I created this [k8s cheat sheet](https://linuxacademy.com/blog/containers/kubernetes-cheat-sheet/) to help you memorize commands.
+These exercises are supplemental to and follow the [CKA course](https://linuxacademy.com/course/cloud-native-certified-kubernetes-administrator-cka/) on Linux Academy. If you don't have a cluster to practice on, the Hands-on Labs at Linux Academy are the quickest way to get started. Also, I created this [k8s cheat sheet](https://acloudguru.com/blog/engineering/kubernetes-cheat-sheet) to help you memorize commands.
 
 During the exam, you will have access to six different clusters (below) in the following configurations:
 
