@@ -401,7 +401,7 @@ kubectl get po --field-selector status.phase=Running
 <p>
 
 ```bash
-kubectl get po --field-selector status.phase=Running
+kubectl get svc --field-selector metadata.namespace=default
 ```
 
 </p>
