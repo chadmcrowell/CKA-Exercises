@@ -332,13 +332,13 @@ status: {}
 ```
 
 ```bash
-# create the deployment 
+# create the deployment
 kubectl apply -f deploy.yaml
 # get verbose output of deployment YAML
 kubectl get deploy nginx-deployment -o yaml
 # add an annotation to the deployment
 kubectl annotate deploy nginx mycompany.com/someannotation="chad"
-# delete the deployment 
+# delete the deployment
 kubectl delete deploy nginx
 ```
 
@@ -401,7 +401,7 @@ kubectl get po --field-selector status.phase=Running
 <p>
 
 ```bash
-kubectl get po --field-selector=status.phase=Running
+kubectl get svc --field-selector metadata.namespace=default
 ```
 
 </p>
