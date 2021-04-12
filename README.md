@@ -8,8 +8,6 @@ A set of exercises to help you prepare for the [Certified Kubernetes Administrat
 
 The format of the exam is entirely in a hands-on, command-line environment. You can take the exam at home or in a testing center, and you must complete the exam in 180 minutes. Register for the exam [here](https://www.cncf.io/certification/cka/). The cost is US $300.00.
 
-These exercises are supplemental to and follow the [CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76) on A Cloud Guru. If you don't have a cluster to practice on, the Hands-on Labs at Linux Academy are the quickest way to get started. Also, I created this [k8s cheat sheet](https://acloudguru.com/blog/engineering/kubernetes-cheat-sheet) to help you memorize commands.
-
 During the exam, you will have access to six different clusters (below) in the following configurations:
 
 | Cluster | Members                | CNI      | Description                        |
@@ -32,13 +30,10 @@ Not sure if you have the right equipment to take the exam at home? [Run a system
 
 ## Contents
 
-- [Core Concepts - 19%](core_concepts.md)
-- [Installation, Configuration & Validation - 12%](install_configure_validate.md)
-- [Cluster Maintenance - 11%](cluster_maint.md)
-- [Networking - 11%](networking.md)
-- [Scheduling - 5%](scheduling.md)
-- [Application Lifecycle Management - 8%](app_lifecycle.md)
-- [Storage - 7%](storage.md)
-- [Security - 12%](security.md)
-- [Logging/Monitoring - 5%](logging_monitoring.md)
-- [Troubleshooting - 10%](troubleshooting.md)
+- [Cluster Architecture, Installation & Configuration - 25%](core_concepts.md)
+- [Workloads & Scheduling - 15%](scheduling.md)
+- [Services & Networking - 20%](networking.md)
+- [Storage - 10%](storage.md)
+- [Troubleshooting - 30%](troubleshooting.md)
+
+[View the most current exam curriculum](https://github.com/cncf/curriculum)
