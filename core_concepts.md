@@ -72,13 +72,13 @@ kubectl config set-context gce --user=cluster-admin --namespace=foo \
 </p>
 </details>
 
-### List all services in the namespace
+### List all services in the kube-system namespace
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl get services
+kubectl get svc -n kube-system
 ```
 
 </p>
