@@ -2,7 +2,7 @@
 
 # CKA Exercises
 
-[![cka-badge](https://www.cncf.io/wp-content/uploads/2020/08/logo_cka_whitetext-2-1024x1024.png)](https://www.cncf.io/certification/cka/)
+[![cka-badge](https://www.cncf.io/wp-content/uploads/2020/08/logo_cka_whitetext-2-1024x1024.png =100x20)](https://www.cncf.io/certification/cka/)
 
 A set of exercises to help you prepare for the [Certified Kubernetes Administrator (CKA) Exam](https://www.cncf.io/certification/cka/)
 
