@@ -29,6 +29,10 @@ rules:
 
 # create the role
 kubectl apply -f role.yml
+
+# or imperatively 
+
+kubectl -n default create role pod-reader --verb=get,watch,list --resource=pods,pods/logs
 ```
 
 </p>
@@ -54,6 +58,10 @@ roleRef:
   kind: Role
   name: pod-reader
   apiGroup: rbac.authorization.k8s.io
+
+# or imperatively
+
+kubectl -n default create rolebinding pod-reader --role=pod-reader --user=dev
 ```
 
 </p>
