@@ -297,14 +297,9 @@ kubectl get componentstatus
 <details><summary>show</summary>
 <p>
 
-```bash
-# create a  YAML template with this command
-kubectl run nginx --image=nginx --replicas=2 --dry-run -o yaml > deploy.yaml
-# see it
-cat deploy.yaml
-```
-
 ```YAML
+# create a deployment object using this YAML template with the following command
+cat <<EOF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -329,9 +324,12 @@ spec:
         name: nginx
         resources: {}
 status: {}
+EOF
 ```
 
 ```bash
+# create the file deploy.yaml with the content above
+vim deploy.yaml
 # create the deployment
 kubectl apply -f deploy.yaml
 # get verbose output of deployment YAML
