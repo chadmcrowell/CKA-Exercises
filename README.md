@@ -2,7 +2,7 @@
 
 # CKA Exercises
 
-[![cka-badge](https://kloudle.com/blog/rogue-one-a-certified-kubernetes-administrator-cka-exam-story/logo_cka_whitetext-2.png)](https://www.cncf.io/certification/cka/)
+[![cka-badge](https://training.linuxfoundation.org/wp-content/uploads/2019/03/logo_cka_whitetext-300x293.png](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/)
 
 A set of exercises to help you prepare for the [Certified Kubernetes Administrator (CKA) Exam](https://www.cncf.io/certification/cka/)
 
