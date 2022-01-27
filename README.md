@@ -6,7 +6,7 @@
 
 A set of exercises to help you prepare for the [Certified Kubernetes Administrator (CKA) Exam](https://www.cncf.io/certification/cka/)
 
-The format of the exam is entirely in a hands-on, command-line environment. You can take the exam at home or in a testing center, and you must complete the exam in 180 minutes. Register for the exam [here](https://www.cncf.io/certification/cka/). The cost is US $300.00.
+The format of the exam is entirely in a hands-on, command-line environment. You can take the exam at home or in a testing center, and you must complete the exam in 180 minutes. Register for the exam [here](https://www.cncf.io/certification/cka/). The cost is US $375.00.
 
 During the exam, you will have access to six different clusters (below) in the following configurations:
 
