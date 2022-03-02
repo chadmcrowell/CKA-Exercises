@@ -69,3 +69,59 @@ kubectl create deployment nginx --image=nginx --dry-run -o yaml > deploy.yml
 
 </p>
 </details>
+
+### Create a configmap named my-configmap with two values, one single line and one multi-line
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# create a file named my-configmap.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  key1: Hello, world!
+  key2: |
+    Test
+    multiple lines
+    more lines
+
+# create the confimap from the file my-configmap.yml
+kubectl apply -f my-configmap.yml
+
+# view the configmap data in the cluster
+kubectl describe configmap my-configmap
+```
+
+</p>
+</details>
+
+### Create a secret via yaml that contains two base64 encoded values
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# create two base64 encoded strings
+echo -n 'secret' | base64
+
+echo -n 'anothersecret' | base64
+
+# create a file named secret.yml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+type: Opaque
+data:
+  secretkey1: <base64 String 1>
+  secretkey2: <base64 String 2>
+
+# create a secret
+kubectl create -f secretl.yml
+```
+
+</p>
+</details>
