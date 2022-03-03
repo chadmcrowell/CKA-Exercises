@@ -219,18 +219,6 @@ kubectl logs nginx
 </p>
 </details>
 
-### Output a pod's YAML without cluster specific information
-
-<details><summary>show</summary>
-<p>
-
-```bash
-kubectl get pod my-pod -o yaml --export
-```
-
-</p>
-</details>
-
 ### List all nodes in the cluster
 
 <details><summary>show</summary>
