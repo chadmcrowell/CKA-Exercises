@@ -8,7 +8,7 @@ A set of exercises to help you prepare for the [Certified Kubernetes Administrat
 
 The format of the exam is entirely in a hands-on, command-line environment. You can take the exam at home or in a testing center, and you must complete the exam in 180 minutes. Register for the exam [here](https://www.cncf.io/certification/cka/). The cost is US $375.00.
 
-As of December 2021, over 32,000 people have taken the CKA exam since it's introduction in 2017!
+As of December 2021, over 32,000 people have taken the CKA exam since its introduction in 2017!
 
 During the exam, you will have access to six different clusters (below) in the following configurations:
 
@@ -42,11 +42,11 @@ Not sure if you have the right equipment to take the exam at home? [Run a system
 
 ## Additional Grading Information
 
-The CKA exam is graded for outcome only (i.e. end state of the system). The path that a exam taker may have taken to get to the outcome is not evaluated, meaning an exam taker can take any path they want as long as it achieves the correct outcome. Incomplete work, i.e. work that is input but did not lead to the correct outcome, will not be evaluated.
+The CKA exam is graded for outcome only (i.e. end state of the system). The path that an exam taker may have taken to get to the outcome is not evaluated, meaning an exam taker can take any path they want as long as it achieves the correct outcome. Incomplete work, i.e. work that is input but did not lead to the correct outcome, will not be evaluated.
 
 Some exam items may have multiple parts and therefore have multiple 'checks' (one for each verifiable component of the answer). Candidates will be given credit for each successful check, so partial credit is possible on such items.
 
-Exam items are also setup to be independent of one another.  As long as the candidate does exactly what the questions ask, there will be no dependencies or conflicts, and as long as the candidate correctly achieves the outcome being asked for in the specific exam item, they would earn points for that particular exam item.
+Exam items are also set up to be independent of one another.  As long as the candidate does exactly what the questions ask, there will be no dependencies or conflicts, and as long as the candidate correctly achieves the outcome being asked for in the specific exam item, they would earn points for that particular exam item.
 
 Scoring is done using an automatic grading script. The grading scripts have been time tested and continuously refined, so the likelihood of having incorrectly graded a question or two is very low since we grade on outcomes (end state of the system), not the path the user took to get there.
 
