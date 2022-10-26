@@ -50,6 +50,6 @@ Exam items are also setup to be independent of one another.  As long as the cand
 
 Scoring is done using an automatic grading script. The grading scripts have been time tested and continuously refined, so the likelihood of having incorrectly graded a question or two is very low since we grade on outcomes (end state of the system), not the path the user took to get there.
 
-## Updates - as of January 2022
+## Updates - as of October 2022
 
-The CKA exam is currently on v1.22 of k8s. The exam development team advises that removal of dockershim is scheduled for Kubernetes v1.24. The exams are upgraded to the latest version of k8s within 4-6 weeks of the version being released. [Dockershim FAQ](https://kubernetes.io/blog/2020/12/02/dockershim-faq/)
+The CKA exam is currently on v1.25 of k8s. The removal of dockershim happend in v1.24, so expect this if you are taking the exam today and into the future. The exams are upgraded to the latest version of k8s within 4-6 weeks of the version being released. [Dockershim FAQ](https://kubernetes.io/blog/2020/12/02/dockershim-faq/)
