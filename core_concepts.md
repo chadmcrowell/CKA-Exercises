@@ -263,7 +263,7 @@ kubectl describe nodes
 <p>
 
 ```bash
-kubectl get services --sort.by=.metadata.name
+kubectl get services --sort-by=.metadata.name
 ```
 
 </p>
