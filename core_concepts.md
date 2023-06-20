@@ -1,4 +1,4 @@
-# Core Concepts (13%)
+# Cluster Architecture, Installation & Configuration (25%)
 
 kubernetes.io > Documentation > Reference > kubectl CLI > [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
@@ -451,6 +451,66 @@ kubectl get po --field-selector status.phase=Running
 
 ```bash
 kubectl get svc --field-selector metadata.namespace=default
+```
+
+</p>
+</details>
+
+### List all API resources in your Kubernetes cluster
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl api-resources
+```
+
+</p>
+</details>
+
+### List the services on your Linux operating system that are associated with Kubernetes
+
+<details><summary>show</summary>
+<p>
+
+```bash
+systemctl list-unit-files --type service --all | grep kube
+```
+
+</p>
+</details>
+
+### List the status of the kubelet service running on the Kubernetes node
+
+<details><summary>show</summary>
+<p>
+
+```bash
+systemctl status kubelet
+```
+
+</p>
+</details>
+
+### Use the imperative command to create a pod named nginx-pod with the image nginx, but save it to a YAML file named pod.yaml instead of creating it
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl run nginx --image nginx-pod --dry-run=client -o yaml > pod.yaml
+```
+
+</p>
+</details>
+
+### List all the services created in your Kubernetes cluster, across all namespaces
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl get svc -A
 ```
 
 </p>
