@@ -32,7 +32,7 @@ Not sure if you have the right equipment to take the exam at home? [Run a system
 
 ## Contents
 
-- [Cluster Architecture, Installation & Configuration - 25%](core_concepts.md)
+- [Cluster Architecture, Installation & Configuration - 25%](cluster-architecture.md)
 - [Workloads & Scheduling - 15%](scheduling.md)
 - [Services & Networking - 20%](networking.md)
 - [Storage - 10%](storage.md)
