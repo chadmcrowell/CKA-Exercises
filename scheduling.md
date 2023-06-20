@@ -125,3 +125,36 @@ kubectl create -f secretl.yml
 
 </p>
 </details>
+
+### Apply the label “disk=ssd” to a node. Create a pod named “fast” using the nginx image and make sure that it selects a node based on the label “disk=ssd”
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# label the node named 'node01'
+kubectl label no node01 "disk=ssd"
+
+# create the pod YAML for pod named 'fast'
+kubectl run fast --image nginx --dry-run=client -o yaml > fast.yaml
+```
+
+```yaml
+# fast.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: fast
+  name: fast
+spec:
+  nodeSelector: ### ADD THIS LINE
+    disk: ssd   ### ADD THIS LINE
+  containers:
+  - image: nginx
+    name: fast
+```
+
+</p>
+</details>
