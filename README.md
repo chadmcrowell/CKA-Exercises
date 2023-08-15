@@ -10,6 +10,8 @@ The format of the exam is entirely in a hands-on, command-line environment. You 
 
 As of December 2021, over 32,000 people have taken the CKA exam since it's introduction in 2017!
 
+To complete the exercises in this repo and get even more practice with exam-like scenarios in a **FREE** Kubernetes lab environment, go to [killercoda.com](https://killercoda.com/chadmcrowell)
+
 During the exam, you will have access to six different clusters (below) in the following configurations:
 
 | Cluster | Members                | CNI      | Description                        |
