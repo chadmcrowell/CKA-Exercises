@@ -225,7 +225,7 @@ kubectl logs nginx
 <p>
 
 ```bash
-kubectl get pod my-pod -o yaml --export
+kubectl get pod my-pod -o yaml
 ```
 
 </p>
