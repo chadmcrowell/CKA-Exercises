@@ -52,7 +52,7 @@ Scoring is done using an automatic grading script. The grading scripts have been
 
 ## Updates - as of October 2022
 
-The CKA exam is currently on v1.27 of k8s. The removal of dockershim happend in v1.24, so expect the containerd container runtime if you are taking the exam today and into the future. You can view the container runtime in use with the command `k get no -o wide`. The output will look similar to this:
+The CKA exam is currently on v1.27 of k8s. The removal of dockershim happend in v1.24, so expect the containerd container runtime if you are taking the exam today and into the future. You can view the container runtime in use with the command `k get no -o wide`. The output will look similar to this (see the column named "CONTAINER-RUNTIME"):
 ```bash
 NAME           STATUS   ROLES           AGE    VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
 controlplane   Ready    control-plane   7d5h   v1.27.1   172.30.1.2    <none>        Ubuntu 20.04.5 LTS   5.4.0-131-generic   containerd://1.6.12
