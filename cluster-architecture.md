@@ -331,7 +331,7 @@ kubectl delete po nginx
 </p>
 </details>
 
-### Get the status of the control plane components
+### Get the status of the control plane components (cluster health)
 
 <details><summary>show</summary>
 <p>
@@ -340,11 +340,23 @@ kubectl delete po nginx
 # check the livez endpoint 
 curl -k https://localhost:6443/livez?verbose
 
+# or
+
+kubectl get --raw='/livez?verbose'
+
 # check the readyz endpoint
 curl -k https://localhost:6443/readyz?verbose
 
+# or
+
+kubectl get --raw='/readyz?verbose'
+
 # check the healthz endpoint
 curl -k https://localhost:6443/healthz?verbose
+
+# or
+
+kubectl get --raw='/healthz?verbose'
 ```
 [Kubernetes API Health Endpoints](https://kubernetes.io/docs/reference/using-api/health-checks/)
 
