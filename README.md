@@ -52,4 +52,4 @@ Scoring is done using an automatic grading script. The grading scripts have been
 
 ## Updates - as of October 2022
 
-The CKA exam is currently on v1.25 of k8s. The removal of dockershim happend in v1.24, so expect this if you are taking the exam today and into the future. The exams are upgraded to the latest version of k8s within 4-6 weeks of the version being released. [Dockershim FAQ](https://kubernetes.io/blog/2020/12/02/dockershim-faq/)
+The CKA exam is currently on v1.25 of k8s. The removal of dockershim happend in v1.27, so expect this if you are taking the exam today and into the future. The exams are upgraded to the latest version of k8s within 4-6 weeks of the version being released. [Dockershim FAQ](https://kubernetes.io/blog/2020/12/02/dockershim-faq/)
