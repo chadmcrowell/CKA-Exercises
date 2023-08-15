@@ -337,8 +337,16 @@ kubectl delete po nginx
 <p>
 
 ```bash
-kubectl get componentstatus
+# check the livez endpoint 
+curl -k https://localhost:6443/livez?verbose
+
+# check the readyz endpoint
+curl -k https://localhost:6443/readyz?verbose
+
+# check the healthz endpoint
+curl -k https://localhost:6443/healthz?verbose
 ```
+[Kubernetes API Health Endpoints](https://kubernetes.io/docs/reference/using-api/health-checks/)
 
 </p>
 </details>
