@@ -26,8 +26,7 @@ During the exam, you will have access to six different clusters (below) in the f
 [source](https://docs.linuxfoundation.org/tc-docs/certification/tips-cka-and-ckad#cka-and-ckad-environment)
 
 Also during the exam, you may have one and ONLY one of the following tabs open at all times:  
-[kubernetes.io](https://kubernetes.io/docs/home/)  
-[github.com/kubernetes](https://github.com/kubernetes/)  
+[kubernetes.io/docs](https://kubernetes.io/docs/home/)  
 [kubernetes.io/blog](https://kubernetes.io/blog/)
 
 Not sure if you have the right equipment to take the exam at home? [Run a system check](https://www.examslocal.com/ScheduleExam/Home/CompatibilityCheck)
