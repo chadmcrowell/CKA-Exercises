@@ -2,6 +2,9 @@
 
 # CKA Exercises
 
+> IMPORTANT EXAM CHANGES COMING NOVEMBER 25th, 2024
+![CKA Exam changes](cka-changes-2024/cka-exam-changes-2024-overview.png)
+
 [![cka-badge](https://training.linuxfoundation.org/wp-content/uploads/2019/03/logo_cka_whitetext-300x293.png)](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/)
 
 A set of exercises to help you prepare for the [Certified Kubernetes Administrator (CKA) Exam](https://www.cncf.io/certification/cka/)
