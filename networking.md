@@ -1,4 +1,4 @@
-# Cluster Maintenance (11%)
+# Services & Networking (20%)
 
 kubernetes.io > Documentation > Reference > kubectl CLI > [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
@@ -211,3 +211,5 @@ ETCDCTL_API=3 etcdctl get cluster.name \
 
 </p>
 </details>
+
+[MORE CKA EXAM EXERCISES HERE](https://killercoda.com/chadmcrowell/course/cka)

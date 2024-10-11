@@ -1,4 +1,4 @@
-# Core Concepts (13%)
+# Storage (10%)
 
 kubernetes.io > Documentation > Reference > kubectl CLI > [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
@@ -67,3 +67,4 @@ kubectl -n default create rolebinding pod-reader --role=pod-reader --user=dev
 </p>
 </details>
 
+[MORE CKA EXAM EXERCISES HERE](https://killercoda.com/chadmcrowell/course/cka)

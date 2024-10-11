@@ -252,3 +252,5 @@ spec:
 
 </p>
 </details>
+
+[MORE CKA EXAM EXERCISES HERE](https://killercoda.com/chadmcrowell/course/cka)
