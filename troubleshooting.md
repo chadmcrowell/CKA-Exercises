@@ -44,6 +44,9 @@ kubectl top pod
 # view resource usage by the nodes in the cluster
 kubectl top node
 ```
+</p>
+</details>
+
 In cluster “ik8s”, in a namespace named “db08328”, create a deployment with the kubectl command-line (imperatively) named “mysql” with the image “mysql:8”. List the pods in the “db08328” namespace to see if the pod is running. If the pod is not running, view the logs to determine why the pod is not in a healthy state. Once you’ve collected the necessary log information, make the necessary changes to the pod in order to fix the pod and get the pod back up in a running healthy state.
 
 Run the command k run testbox --image busybox --command 'sleep 3600' to create a new pod named “testbox”. See if the container is running or not. Go through the decision tree to find out why and fix the pod so that it’s running.
@@ -69,7 +72,6 @@ In cluster “ik8s”, run the command `k replace -f https://raw.githubusercont
 In cluster “ik8s”, in a namespace named “kb6656”, run the command `k apply -f` `https://raw.githubusercontent.com/chadmcrowell/acing-the-cka-exam/main/ch_08/deploy-and-svc.yaml` to create a deployment and service in the cluster. This is an nginx application running on port 80, so try to reach the application by using curl to reach the IP address and port of the service. Once you realize that you cannot communicate with the application via curl, try to see why. Make the necessary changes to the reach the application using curl and return the nginx welcome page.
 
 
-</p>
-</details>
+
 
 [MORE CKA EXAM EXERCISES HERE](https://killercoda.com/chadmcrowell/course/cka)
