@@ -34,7 +34,7 @@ kubectl uncordon node1.mylabserver.com
 </p>
 </details>
 
-### Updgrade kubeadm to version 1.18.6
+### Upgrade kubeadm to version 1.18.6
 
 <details><summary>show</summary>
 <p>
