@@ -3,7 +3,7 @@
 # CKA Exercises
 
 > IMPORTANT EXAM CHANGES COMING JANUARY 15th, 2025
-[Read more about the CKA exam changes coming January 15th, 2025](cka-changes-2024/README.md)
+[Read more about the CKA exam changes coming February 10th, 2025](cka-changes-2024/README.md)
 
 [![cka-badge](https://training.linuxfoundation.org/wp-content/uploads/2019/03/logo_cka_whitetext-300x293.png)](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/)
 
