@@ -8,6 +8,6 @@
 
 [![alt text](free-download-button.png)](cka-new-exam-changes-november-25-2024.pdf)
 
-[Side by Side Comparison - New CKA Objectives](cka-new-exam-changes-november-25-2024.pdf)
+[Side by Side Comparison - New CKA Objectives](cka-exam-changes-feb10-2025.pdf)
 
 ![CKA Exam Changes - Overview](cka-exam-changes-2024-overview.png)
