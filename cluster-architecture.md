@@ -128,6 +128,22 @@ roleRef:
   kind: Role
   name: pod-reader
   apiGroup: rbac.authorization.k8s.io
+
+# create the role binding from YAML
+kubectl create -f role-binding.yaml
+```
+
+Test the role binding using `kubectl auth can-i`
+```bash
+# see if the user "dev" can list pods
+kubectl auth can-i get pods --namespace=default --as=dev
+
+# see if the user "dev" can view pod logs
+kubectl auth can-i get pods/log --namespace=default --as=dev
+
+# check that the user "dev" cannot create pods
+kubectl auth can-i create pods --namespace=default --as=dev
+
 ```
 
 </p>
