@@ -1,4 +1,4 @@
-## CKA Exam Changes - February 10, 2025
+## CKA Exam Changes - February 18, 2025
 
 [Official Announcement - Linux Foundation](https://training.linuxfoundation.org/certified-kubernetes-administrator-cka-program-changes/)
 
