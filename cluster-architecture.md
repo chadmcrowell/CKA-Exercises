@@ -74,6 +74,55 @@ kubectl api-resources
 </p>
 </details>
 
+### View the client certificate that the kubelet uses to authenticate to the Kubernetes API
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# The kubelet’s client certificate is named `kubelet-client-current.pem` and is stored locally on the control plane node
+# on the cka exam, make sure to ssh to the control plane node first
+ls /var/lib/kubelet/pki/
+
+# view the certificate file `kubelet-client-current.pem` with openssl CLI
+openssl x509 -in /var/lib/kubelet/pki/kubelet-client-current.pem -text -noout
+```
+</p>
+</details>
+
+
+### Upgrade the control plane components using kubeadm. When completed, check that everything, including kubelet and kubectl is upgrade to version 1.31.6
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# list the control plane components at their current version and target version
+kubeadm upgrade plan
+
+# apply the upgrade to 1.31.6
+kubeadm upgrade apply v1.31.6
+
+# optionally upgrade kubeadm 
+# this is if you get the message "Specified version to upgrade to "v1.31.6" is higher than the kubeadm version "v1.31.0". Upgrade kubeadm first using the tool you used to install kubeadm"
+
+# Download the public signing key for the Kubernetes package repositories
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+# Add the appropriate Kubernetes apt repository
+# This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+# update kubeadm to version 1.31.6-1.1
+sudo apt install -y kubeadm=1.31.6-1.1
+
+# try again to upgrade the control plane components using kubeadm
+kubeadm upgrade apply v1.31.6 -y
+```
+</p>
+</details>
+
+
 ### Create a role the will allow users to get, watch, and list pods and container logs
 
 <details><summary>show</summary>
@@ -163,14 +212,17 @@ kubectl config set-context --current --namespace=ggcka-s2
 </p>
 </details>
 
-### Set a context utilizing a specific username and namespace
+### Set a context utilizing a specific `cluster-admin` user in `default` namespace
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl config set-context gce --user=cluster-admin --namespace=foo \
-  && kubectl config use-context gce
+# set context gce to user "admin" in the namespace "default"
+kubectl config set-context gce --user=cluster-admin --namespace=default \
+
+# use the context
+kubectl config use-context gce
 ```
 
 </p>
@@ -202,25 +254,27 @@ k get po -A
 </p>
 </details>
 
-### List all pods in the namespace, with more details
+### List all pods in the `default` namespace, with more details
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl get pods -o wide
+kubectl -n default get pods -o wide
 ```
 
 </p>
 </details>
 
-### List a particular deployment
+### List a deployment named `nginx-deployment`
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl get deployment my-deployment
+kubectl get deployment nginx-deployment
+# or
+kubectl -n default get deploy nginx-deployment
 ```
 
 </p>
@@ -232,19 +286,23 @@ kubectl get deployment my-deployment
 <p>
 
 ```bash
-kubectl get pods
+kubectl -n default get pods
+# or
+k -n default get po
 ```
 
 </p>
 </details>
 
-### Get pod's YAML
+### Get the pod YAML from a pod named `nginx`
 
 <details><summary>show</summary>
 <p>
 
 ```bash
 kubectl get po nginx -o yaml
+# or
+k -n default get po -o yaml
 ```
 
 </p>
@@ -262,7 +320,7 @@ kubectl describe po nginx
 </p>
 </details>
 
-### Get pod logs
+### Get pod logs from a pod named `nginx`
 
 <details><summary>show</summary>
 <p>
