@@ -79,6 +79,13 @@ kubectl api-resources
 <details><summary>show</summary>
 <p>
 
+Create a role just using the kubectl command line
+```bash
+# create a role using `kubectl create role -h` for help
+kubectl create role pod-reader --verb=get,watch,list --resource=pods,pods/log
+```
+
+Create a role from a YAML file named `role.yaml`
 ```bash
 # create a file named role.yml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -93,6 +100,9 @@ rules:
 
 # create the role
 kubectl apply -f role.yml
+
+# EXTRA CREDIT: After you've created the role binding, use `kubectl auth can-i..` to test the role
+
 ```
 
 </p>
