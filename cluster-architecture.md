@@ -118,6 +118,9 @@ sudo apt install -y kubeadm=1.31.6-1.1
 
 # try again to upgrade the control plane components using kubeadm
 kubeadm upgrade apply v1.31.6 -y
+
+# run kubeadm upgrade plan again to verify that everything is upgraded to 1.31.6
+kubeadm upgrade plan
 ```
 </p>
 </details>
@@ -198,7 +201,34 @@ kubectl auth can-i create pods --namespace=default --as=dev
 </p>
 </details>
 
-### 
+### Create a new role named `sa-creator` that will allow creating service accounts.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# use kubectl to create the role, with the help of `kubectl create role -h`
+kubectl create role sa-creator --verb=create --resource=sa
+```
+
+</p>
+</details> 
+
+### Create a role binding that is associated with the previous `sa-creator` role, named `sa-creator-binding` that will bind to the user `sandra`
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# use kubectl to create the role binding, with the help of `kubectl create rolebinding -h`
+kubectl create rolebinding sa-creator-binding --role=sa-creator --user=sandra
+
+# use `kubectl auth can-i` to verify sandra can create service accounts
+kubectl auth can-i create sa --as sandra
+```
+
+</p>
+</details>
 
 ### Permanently save the namespace `ggcka-s2` for all subsequent kubectl commands in that context.
 
