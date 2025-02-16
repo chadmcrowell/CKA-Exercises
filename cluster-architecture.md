@@ -23,6 +23,21 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 </p>
 </details>
 
+### Setup alias for kubectl
+
+<details><summary>show</summary>
+<p>
+
+```bash
+alias k=kubectl
+# have this persist beyond the current shell
+echo 'alias k=kubectl' >> ~/.bashrc
+source ~/.bashrc
+```
+
+</p>
+</details>
+
 ### Show kubeconfig settings
 
 <details><summary>show</summary>
@@ -42,6 +57,18 @@ kubectl config view
 
 ```bash
 KUBECONFIG=~/.kube/config:~/.kube/kubconfig2
+```
+
+</p>
+</details>
+
+### Perform the command to list all API resources in your Kubernetes cluster
+
+<details><summary>show</summary>
+<p>
+
+```bash
+kubectl api-resources
 ```
 
 </p>
@@ -135,13 +162,15 @@ kubectl get svc -n kube-system
 </p>
 </details>
 
-### Get pods on all namespaces
+### List the pods in all namespaces
 
 <details><summary>show</summary>
 <p>
 
 ```bash
 kubectl get po --all-namespaces
+# or
+k get po -A
 ```
 
 </p>
@@ -257,13 +286,15 @@ kubectl describe nodes
 </p>
 </details>
 
-### List services sorted by name
+### List services in the default namespace, sorted by name
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl get services --sort.by=.metadata.name
+kubectl -n default get services --sort.by=.metadata.name
+# or
+k -n default get svc --sort.by=.metadata.name
 ```
 
 </p>
@@ -593,7 +624,8 @@ cat: /var/run/secrets/kubernetes.io/serviceaccount/token: No such file or direct
 
 
 
+---
 
 ## FIND MORE KILLERCODA CKA EXAM EXERCISES
-Killercoda.com, the same company that brought you the [exam simulator](https://killer.sh) for the CKA Exam, brings you a free [Kubernetes](https://kubernetes.io/) lab environment.
+[Killercoda.com](https://killercoda.com), the same company that brought you the [exam simulator](https://killer.sh) for the CKA Exam, brings you a free [Kubernetes](https://kubernetes.io/) lab environment.
 [MORE CKA EXAM EXERCISES HERE](https://killercoda.com/cka)

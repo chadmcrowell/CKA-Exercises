@@ -73,5 +73,8 @@ In cluster “ik8s”, in a namespace named “kb6656”, run the command `k ap
 
 
 
+---
 
-[MORE CKA EXAM EXERCISES HERE](https://killercoda.com/chadmcrowell/course/cka)
+## FIND MORE KILLERCODA CKA EXAM EXERCISES
+[Killercoda.com](https://killercoda.com), the same company that brought you the [exam simulator](https://killer.sh) for the CKA Exam, brings you a free [Kubernetes](https://kubernetes.io/) lab environment.
+[MORE CKA EXAM EXERCISES HERE](https://killercoda.com/cka)
