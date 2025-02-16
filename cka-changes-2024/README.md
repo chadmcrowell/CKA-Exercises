@@ -6,8 +6,8 @@
 
 ---
 
-[![Download CKA Exam Changes Document](free-download-button.png)](cka-exam-changes-feb10-2025.pdf)
+[![Download CKA Exam Changes Document](free-download-button.png)](cka-exam-changes-feb18-2025.pdf)
 
-[Side by Side Comparison - New CKA Objectives](cka-exam-changes-feb10-2025.pdf)
+[Side by Side Comparison - New CKA Objectives](cka-exam-changes-feb18-2025.pdf)
 
 ![CKA Exam Changes - Overview](cka-exam-changes-overview-2025.png)
