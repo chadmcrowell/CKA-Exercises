@@ -536,4 +536,61 @@ kubectl get svc -A
 </p>
 </details>
 
+### Create a service account and pod that does NOT mount the service account token
+
+<details><summary>show</summary>
+<p>
+
+Create the service account
+```bash
+# create the YAML for a service account named 'secure-sa' with the '--dry-run=client' option, saving it to a file named 'sa.yaml'
+kubectl -n default create sa secure-sa --dry-run=client -o yaml > sa.yaml 
+
+# add the automountServiceAccountToken: false to the end of the file 'sa.yaml'
+echo "automountServiceAccountToken: false" >> sa.yaml
+
+# create the service account from the file 'sa.yaml'
+kubectl create -f sa.yaml
+
+# list the newly created service account
+kubectl -n default get sa
+```
+
+Creat a pod that uses the service account
+```bash
+# create the YAML for a pod named 'secure-pod' by using kubectl with the '--dry-run=client' option, output to YAML and saved to a file 'pod.yaml'
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-pod
+spec:
+  serviceAccountName: secure-sa
+  containers:
+  - image: nginx
+    name: secure-pod
+EOF
+
+# watch the 'secure-pod' pod waiting until the pod is running before proceeding
+kubectl get po -w
+```
+
+Ensure the service account token was not mounted
+```bash
+# get a shell to the pod and try to list the contents of the token
+kubectl exec secure-pod -- cat /var/run/secrets/kubernetes.io/serviceaccount/token
+```
+
+You should get the following, indicating that the token was not mounted
+```bash
+cat: /var/run/secrets/kubernetes.io/serviceaccount/token: No such file or directory
+```
+
+[Try this in Killercoda's Kubernetes Lab Environment](https://killercoda.com/chadmcrowell/course/cka/create-sa-for-pod)
+
+</p>
+</details>
+
+
+
 [MORE CKA EXAM EXERCISES HERE](https://killercoda.com/chadmcrowell/course/cka)
