@@ -151,13 +151,13 @@ kubectl auth can-i create pods --namespace=default --as=dev
 
 ### 
 
-### Permanently save the namespace for all subsequent kubectl commands in that context.
+### Permanently save the namespace `ggcka-s2` for all subsequent kubectl commands in that context.
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-kubectl config set-context --current --namespace=ggckad-s2
+kubectl config set-context --current --namespace=ggcka-s2
 ```
 
 </p>
