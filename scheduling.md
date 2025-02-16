@@ -98,29 +98,106 @@ k get deploy nginx -o yaml | grep image:
 </details>
 
 
-### Create a configmap named my-configmap with two values, one single line and one multi-line
+### Create a configmap named `my-configmap` with two values, one single line and one multi-line
 
 <details><summary>show</summary>
 <p>
 
 ```bash
-# create a file named my-configmap.yml
+# create a configmap with a siingle line and a multi-line
+cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-configmap
 data:
-  key1: Hello, world!
-  key2: |
-    Test
-    multiple lines
-    more lines
-
-# create the confimap from the file my-configmap.yml
-kubectl apply -f my-configmap.yml
+  single: "This is a single line value"
+  multi: |
+    This is a multi-line value.
+    It spans multiple lines.
+    You can include as many lines as needed.
+EOF
 
 # view the configmap data in the cluster
-kubectl describe configmap my-configmap
+kubectl describe cm my-configmap
+
+
+```
+
+</p>
+</details>
+
+### Use the configMap `my-configmap` in a deployment named `my-nginx-deployment` that uses the image `nginx:latest` mounting the configMap as a volume
+
+<details><summary>show</summary>
+<p>
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/config
+          readOnly: true
+      volumes:
+      - name: config-volume
+        configMap:
+          name: my-configmap
+```
+
+</p>
+</details>
+
+### Use the configMap `my-configmap` as an environment variable in a deployment named `mynginx-deploy` that uses the image `nginx-latest`, passing in the single line value as an environment variable named `SINGLE_VALUE` and the multi-line value as `MULTI_VALUE`
+
+<details><summary>show</summary>
+<p>
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        env:
+        - name: SINGLE_VALUE
+          valueFrom:
+            configMapKeyRef:
+              name: my-configmap
+              key: single
+        - name: MULTI_VALUE
+          valueFrom:
+            configMapKeyRef:
+              name: my-configmap
+              key: multi
+
 ```
 
 </p>
@@ -276,6 +353,45 @@ spec:
   containers:
   - image: nginx
     name: ssd-pod
+```
+
+</p>
+</details>
+
+### Create a pod named “limited” with the image “httpd” and set the resource requests to 1 CPU and “100Mi” for memory
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# create the yaml for a pod
+k run limited --image httpd --dry-run=client -o yaml > pod.yaml
+```
+
+Add the YAML for resources requests to the YAML file. Here is the complete file.
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: limited
+spec:
+  containers:
+  - name: httpd
+    image: httpd
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "100Mi"
+```
+
+Create the pod from the YAML file
+```bash
+# create the pod from `pod.yaml` file
+k create -f pod.yaml
+
+# list the pods to see the pod is now running
+k get po
+
 ```
 
 </p>
