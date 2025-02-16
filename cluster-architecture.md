@@ -136,6 +136,30 @@ k get csr sandra -o jsonpath='{.status.certificate}' | base64 -d > sandra.crt
 </p>
 </details>
 
+### Add that new user `sandra` to your local kubeconfig using the kubectl config command
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# set the credentials in your existing kubeconfig (~.kube/config)
+k config set-credentials carlton --client-key=sandra.key --client-certificate=sandra.crt --embed-certs
+
+# view the kubeconfig to see sandra added
+k config view
+
+# get your current context
+k config get-contexts
+
+# set the context for sandra
+k config set-context sandra --user=sandra --cluster=kubernetes
+
+# switch to using the `sandra` context
+kubectl config use-context sandra
+```
+</p>
+</details>
+
 ### Upgrade the control plane components using kubeadm. When completed, check that everything, including kubelet and kubectl is upgrade to version 1.31.6
 
 <details><summary>show</summary>
