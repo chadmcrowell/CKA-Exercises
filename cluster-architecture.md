@@ -90,6 +90,51 @@ openssl x509 -in /var/lib/kubelet/pki/kubelet-client-current.pem -text -noout
 </p>
 </details>
 
+### Create a new user named “Sandra”, first creating the private key, then the certificate signing request, then using the CSR resource in Kubernetes to generate the client certificate.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# create a private key using openssl with 2048-bit encryption
+openssl genrsa -out sandra.key 2048
+
+# create a certificate signing request to give to the Kubernetes API
+openssl req -new -key sandra.key -subj "/CN=sandra" -out sandra.csr
+
+# store the file `sandra.csr` in an environment variable named "REQUEST"
+export REQUEST=$(cat sandra.csr | base64 -w 0)
+
+# create the CSR as a Kubernetes resource
+cat <<EOF | kubectl apply -f -
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: sandra
+spec:
+  groups:
+  - developers
+  request: $REQUEST
+  signerName: kubernetes.io/kube-apiserver-client
+  usages:
+  - client auth
+EOF
+
+# list the requests in the Kubernetes cluster
+k get csr
+
+# approve the csr resource
+k certificate approve sandra
+
+# extract the client certificate from the approved csr
+k get csr sandra -o jsonpath='{.status.certificate}' | base64 -d > sandra.crt
+
+```
+
+[Try this in Killercoda's Kubernetes Lab Environment](https://killercoda.com/chadmcrowell/course/cka/kubernetes-create-user)
+
+</p>
+</details>
 
 ### Upgrade the control plane components using kubeadm. When completed, check that everything, including kubelet and kubectl is upgrade to version 1.31.6
 
