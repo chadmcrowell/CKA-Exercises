@@ -230,6 +230,43 @@ kubectl auth can-i create sa --as sandra
 </p>
 </details>
 
+### Create a role named `deployment-reader` in the `cka-20834` namespace, and allow it to get and list deployments.
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# create the namespace `cka-20834`
+k create ns cka-20834
+
+# create the role in the `cka-20834` namespace with the help of `kubectl create role -h`
+k -n cka-20834 create role deployment-reader --verb=get,list --resource=deploy --api-group=apps
+```
+
+</p>
+</details>
+
+### Create a role binding named `deployment-reader-binding` in the `cka-20834` namespace that will bind the `deployment-reader` role to the service account `demo-sa`
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# create a service account named `demo-sa` in the `cka-20834` namespace
+k -n cka-20834 create sa demo-sa
+
+# create the role binding with the help of `kubectl create rolebinding -h`
+k -n cka-20834 create rolebinding deployment-reader-binding --role=deployment-reader --serviceaccount=cka-20834:demo-sa
+
+# verify the permission with `kubectl auth can-i`
+kubectl auth can-i get deployments --as=system:serviceaccount:cka-20834:demo-sa -n cka-20834
+kubectl auth can-i list deployments --as=system:serviceaccount:cka-20834:demo-sa -n cka-20834
+
+```
+
+</p>
+</details>
+
 ### Permanently save the namespace `ggcka-s2` for all subsequent kubectl commands in that context.
 
 <details><summary>show</summary>
