@@ -231,6 +231,89 @@ kubectl create -f secretl.yml
 </p>
 </details>
 
+### Using kubectl, create a secret named `admin-pass` from the string `SuperSecureP@ssw0rd`
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# create a secret from the string `SuperSecureP@ssw0rd`
+kubectl create secret generic admin-pass --from-literal=password=SuperSecureP@ssw0rd
+```
+
+</p>
+</details>
+
+### Inject the secret `admin-pass` into a deployment named `admin-deploy` as an environment variable named `PASSWORD`
+
+<details><summary>show</summary>
+<p>
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secret-app
+  template:
+    metadata:
+      labels:
+        app: secret-app
+    spec:
+      containers:
+        - name: my-container
+          image: nginx
+          env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret
+                  key: password
+```
+
+</p>
+</details>
+
+### Use the secret `admin-pass` inside a deployment named `secret-deploy` mounting the secret inside the pod at `/etc/secret/password`
+
+<details><summary>show</summary>
+<p>
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secret-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secret-app
+  template:
+    metadata:
+      labels:
+        app: secret-app
+    spec:
+      containers:
+        - name: my-container
+          image: nginx
+          volumeMounts:
+            - name: secret-volume
+              mountPath: "/etc/secret"
+              readOnly: true
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: my-secret
+```
+
+</p>
+</details>
+
 ### Apply the label “disk=ssd” to a node. Create a pod named “fast” using the nginx image and make sure that it selects a node based on the label “disk=ssd”
 
 <details><summary>show</summary>
