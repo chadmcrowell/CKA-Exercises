@@ -16,6 +16,10 @@ kubernetes.io > Documentation > Tasks > Access Applications in a Cluster > [Use 
 <p>
 
 ```bash
+# create the yaml file
+kubectl create deploy my-deployment --image nginx --dry-run=client -o yaml > deploy.yml
+
+# create the resource from the yaml spec
 kubectl apply -f deploy.yml
 ```
 
@@ -28,7 +32,11 @@ kubectl apply -f deploy.yml
 <p>
 
 ```bash
-kubectl describe po nginx
+# create a pod named nginx
+k run nginx --image nginx
+
+# describe the pod
+k describe po nginx
 ```
 
 </p>
@@ -69,6 +77,26 @@ kubectl create deployment nginx --image=nginx --dry-run -o yaml > deploy.yml
 
 </p>
 </details>
+
+### Update the `nginx` deployment to use at new image tag `1.27.4-alpine-slim`
+
+<details><summary>show</summary>
+<p>
+
+```bash
+# list the deployments
+k get deploy
+
+# patch the deployment
+kubectl set image deploy nginx nginx=nginx:1.27.4-alpine-slim
+
+# verify that the new image is set
+k get deploy nginx -o yaml | grep image:
+```
+
+</p>
+</details>
+
 
 ### Create a configmap named my-configmap with two values, one single line and one multi-line
 
