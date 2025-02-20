@@ -4,6 +4,8 @@
 
 [Kubernetes is evolving, the CKA exam too! - CNCF Blog](https://www.cncf.io/blog/2024/09/05/kubernetes-is-evolving-the-cka-exam-too/)
 
+[CKA version 1.32 - Curriculum Overview](https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_v1.32.pdf)
+
 ---
 
 [![Download CKA Exam Changes Document](free-download-button.png)](cka-exam-changes-feb18-2025.pdf)
