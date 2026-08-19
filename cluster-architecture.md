@@ -512,9 +512,9 @@ kubectl describe nodes
 <p>
 
 ```bash
-kubectl -n default get services --sort.by=.metadata.name
+kubectl -n default get services --sort-by=.metadata.name
 # or
-k -n default get svc --sort.by=.metadata.name
+k -n default get svc --sort-by=.metadata.name
 ```
 
 </p>
